@@ -2,15 +2,22 @@ import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
 
-// 
-// Decompiled by Procyon v0.5.36
-// 
-
 public class Deck
 {
+    // INSTANCE VARIABLES
     private List<Card> cards;
     private int size;
     
+    // GETTERS
+    public int size() {
+        return this.size;
+    }
+    
+    public boolean isEmpty() {
+        return this.size() == 0;
+    }
+    
+    // CONSTRUCTOR
     public Deck(final String[] ranks, final String[] suits, final int[] pointValues) {
         this.cards = new ArrayList<Card>();
         for (int i = 0; i < ranks.length; ++i) {
@@ -23,21 +30,16 @@ public class Deck
         Collections.shuffle(this.cards);
     }
     
-    public boolean isEmpty() {
-        return this.size() == 0;
-    }
-    
-    public int size() {
-        return this.size;
-    }
-    
-    public void shuffle() {
-    }
-    
+    /*
+     * This method shuffles the cards in the deck. 
+     */
     public void randomShuffle() {
         Collections.shuffle(this.cards);
     }
     
+    /*
+     * This method returns a card, subtracting from the size and shuffling the deck.
+     */
     public Card deal() {
         if (this.size > 0) {
             --this.size;
@@ -47,6 +49,10 @@ public class Deck
         return null;
     }
     
+    /*
+     * This method prints out the entire deck as a String
+     * rather than just a single card. 
+     */
     @Override
     public String toString() {
         String rtn = "size = " + this.size + "\nUndealt cards: \n";
